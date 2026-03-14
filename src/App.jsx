@@ -8,28 +8,19 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Unga list-la irukira 10 members emails-ah inga add pannikonga [cite: 2026-03-06]
-  const allowedUsers = [
-    'kishore@gmail.com', 
-    'friend1@gmail.com',
-    'friend2@gmail.com'
-    // ... total 10 per
-  ];
-
   useEffect(() => {
-    if (!auth) return;
+    if (!auth) {
+      console.error("Firebase Auth initialization failed.");
+      return;
+    }
 
+    // [cite: 2026-03-07] - No error crash logic
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // Security: Allowed list-la irundha mattum dhaan dashboard kaatum
-      if (currentUser && allowedUsers.includes(currentUser.email)) {
-        setUser(currentUser);
-      } else if (currentUser) {
-        // Unrecognized user-ah logout panna:
-        auth.signOut();
-        alert("Neenga authorized user illai bro!");
-      } else {
-        setUser(null);
-      }
+      // Security list-ah remove panniten. Ippo yaaru register pannaalum ulla allow pannum.
+      setUser(currentUser);
+      setLoading(false);
+    }, (error) => {
+      console.error("Auth Error:", error);
       setLoading(false);
     });
 
@@ -38,14 +29,25 @@ function App() {
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', background: '#0f172a', color: 'white' }}>
-          <h2>KISHORE AI IS INITIALIZING... 🚀</h2>
+      <div style={{ 
+          display: 'flex', 
+          height: '100vh', 
+          flexDirection: 'column',
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          background: '#0f172a', 
+          color: 'white' 
+      }}>
+          {/* Loading Animation [cite: 2026-03-06] */}
+          <div className="spinner"></div> 
+          <h2 style={{ marginTop: '20px', letterSpacing: '2px' }}>CLARITY IS INITIALIZING... 🚀</h2>
       </div>
     );
   }
 
   return (
     <div className="App">
+      {/* If logged in, go to Dashboard. Otherwise, show Login/Register */}
       {user ? <Dashboard /> : <Login />}
     </div>
   );
