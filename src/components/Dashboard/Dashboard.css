@@ -1,0 +1,334 @@
+/* Dashboard.css - Sunrise Gold Claymorphism Edition [cite: 2026-03-07] */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=JetBrains+Mono&display=swap');
+
+:root {
+  --sidebar-w: 260px;
+  /* Sunrise Gold Palette [cite: 2026-03-08] */
+  --sunrise-bg: #FCF9F5; 
+  --clay-white: #FFFFFF;
+  --accent-gold: linear-gradient(135deg, #FF9933, #FF5E3A);
+  --soft-shadow: rgba(210, 180, 140, 0.3);
+  --text-dark: #4A3F35;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.dashboard-root {
+  display: flex;
+  height: 100vh;
+  background: var(--sunrise-bg);
+  color: var(--text-dark);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+
+/* Sidebar Upgrade */
+.sidebar { 
+  width: var(--sidebar-w); 
+  background: #FFFBF2; 
+  padding: 40px 20px; 
+  border-right: 1px solid rgba(255, 153, 51, 0.1); 
+}
+
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  background: var(--accent-gold); 
+  background-clip: text;
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+}
+
+.nav-list { margin-top: 50px; display: flex; flex-direction: column; gap: 15px; }
+
+.nav-item { 
+  padding: 15px; 
+  border-radius: 20px; 
+  border: none; 
+  background: transparent; 
+  color: #A08C7D; 
+  text-align: left; 
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+.nav-item.active { 
+  background: var(--accent-gold);
+  color: white;
+  box-shadow: 0 10px 20px rgba(255, 94, 58, 0.2);
+}
+
+.main-view { flex: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+
+/* Banner Upgrade */
+.premium-banner { 
+  background: var(--accent-gold); 
+  border-radius: 30px; 
+  padding: 35px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  color: white;
+  box-shadow: 
+    15px 15px 30px rgba(255, 94, 58, 0.2),
+    inset -8px -8px 15px rgba(0, 0, 0, 0.1),
+    inset 8px 8px 15px rgba(255, 255, 255, 0.3);
+}
+
+.content-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
+
+/* SUNRISE CLAY PANEL [cite: 2026-03-08] */
+.glass-panel { 
+  background: var(--clay-white); 
+  border: 1px solid rgba(255, 255, 255, 0.8); 
+  border-radius: 35px; 
+  padding: 30px; 
+  box-shadow: 
+    15px 15px 35px var(--soft-shadow), 
+    inset -10px -10px 20px rgba(0, 0, 0, 0.02),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.9);
+}
+
+.panel-title { color: #FF7A45; font-weight: 700; margin-bottom: 20px; }
+
+/* Tracker Rows Clay Look */
+.tracker-row { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 20px; 
+  background: #FFF; 
+  margin-bottom: 15px; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid #FDF0E0;
+  box-shadow: 5px 5px 10px var(--soft-shadow);
+}
+
+.tracker-row:hover { 
+  transform: translateY(-5px);
+  background: #FFFAF0;
+}
+
+.flex-status { display: flex; align-items: center; gap: 10px; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; }
+.status-dot.done { background: #4CAF50; box-shadow: 0 0 10px #4CAF50; }
+.status-dot.wait { background: #D2B48C; }
+.text-done { color: #4CAF50; font-weight: 700; }
+.text-wait { color: #A08C7D; }
+
+/* Sphere Upgrade - Sunrise Theme [cite: 2026-03-08] */
+.sphere-3d-wrapper {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+  border: 6px solid #FFF;
+  background: #FFF;
+  box-shadow: 
+    15px 15px 30px var(--soft-shadow),
+    inset -10px -10px 20px rgba(255, 153, 51, 0.1),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.8);
+}
+
+.water-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #FFB347, #FF5E3A); /* Gold Water */
+  z-index: 1;
+}
+
+.percentage-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 800;
+  z-index: 10;
+  color: #4A3F35;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Calendar Upgrade */
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
+.cal-date.active { 
+  background: var(--accent-gold); 
+  color: white;
+  border-radius: 12px; 
+  padding: 8px; 
+}
+/* --- DARK THEME OVERRIDE [cite: 2026-03-08] --- */
+
+/* Body-la dark-theme class irundha mattum idhu work aagum */
+body.dark-theme {
+  --sunrise-bg: #0f0f0f;            /* Dark Background */
+  --clay-white: #1a1a1a;            /* Darker Panels */
+  --text-dark: #f5f5f5;             /* Light Text */
+  --soft-shadow: rgba(0, 0, 0, 0.5); /* Stronger Shadows */
+}
+
+/* Dark mode-la glass panel logic [cite: 2026-03-08] */
+body.dark-theme .glass-panel {
+  background: var(--clay-white);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    10px 10px 25px var(--soft-shadow), 
+    inset -5px -5px 15px rgba(255, 255, 255, 0.02),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar for Dark Mode */
+body.dark-theme .sidebar {
+  background: #0a0a0a;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Tracker rows for Dark Mode */
+body.dark-theme .tracker-row {
+  background: #222222;
+  border: 1px solid #333333;
+  color: #eeeeee;
+}
+
+body.dark-theme .tracker-row:hover {
+  background: #2a2a2a;
+}
+
+/* --- SETTINGS PAGE SPECIFIC STYLING [cite: 2026-03-08] --- */
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(160, 140, 125, 0.1);
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #ff4d4d, #d63031) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 15px rgba(214, 48, 49, 0.3) !important;
+}
+
+.logout-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(214, 48, 49, 0.4) !important;
+}
+/* --- HAMBURGER & MOBILE NAVIGATION [cite: 2026-03-10] --- */
+
+/* Hamburger Icon Design */
+.hamburger {
+  display: none; /* Desktop-la hide aagidum */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2000;
+  position: absolute;
+  top: 35px;
+  left: 25px;
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background: var(--accent-gold); /* Unga Sunrise Gold color */
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* Mobile-la mattum kaatum */
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%; /* Initially side-la maranju irukkum */
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 1500;
+    transition: 0.5s ease-in-out;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Menu open-aagumpothu slide in aagum */
+  .sidebar.mobile-open {
+    left: 0;
+  }
+
+  .main-view {
+    padding: 20px;
+    padding-top: 80px; /* Hamburger space-kaaga */
+  }
+
+  /* Content grid mobile-la single column-aa maaridum */
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 25px;
+  }
+
+  /* Overlay Style */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(74, 63, 53, 0.3); /* Clay text color overlay */
+    backdrop-filter: blur(4px);
+    z-index: 1400;
+  }
+
+  /* Hamburger Animation to 'X' */
+  .bar.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+    background: white; /* Close pannumpothu color change */
+  }
+
+  .bar.open:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  .bar.open:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -7px);
+    background: white;
+  }
+  
+  /* Logo adjustment for mobile sidebar */
+  .sidebar.mobile-open .logo {
+    margin-top: 40px;
+  }
+}
+
+/* Dark Theme support for Hamburger */
+body.dark-theme .bar {
+  background: var(--accent-gold);
+}
