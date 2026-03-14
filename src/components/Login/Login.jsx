@@ -79,7 +79,7 @@ function Login({ onLogin }) {
             {isSignup ? 'CREATE ACCOUNT' : 'WELCOME BACK'}
           </h1>
           <p className="login-subtitle">
-            {isSignup ? 'Join the AI Growth Community' : 'Login to your AI portal'}
+            {isSignup ? 'Join the AI Growth Community' : 'Login to your  portal'}
           </p>
 
           {isSignup && (

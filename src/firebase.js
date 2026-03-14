@@ -16,8 +16,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Exporting services for use in App.jsx and Components [cite: 2026-03-06, 2026-03-07]
+// Named exports dhaan namma App.jsx-ku mukkiyam [cite: 2026-03-07]
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export default app;
+// default export-ah remove pannuvom confusion illama irukka

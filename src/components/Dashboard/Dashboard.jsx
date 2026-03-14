@@ -127,7 +127,7 @@ const Dashboard = () => {
       </div>
 
       <aside className={`sidebar ${isOpen ? 'mobile-open' : ''}`}>
-        <h2 className="logo">⚡ KISHORE AI ⚡</h2>
+        <h2 className="logo">⚡ CLARITY ⚡</h2>
         <nav className="nav-list">
           {finalNav.map(tab => (
             <button 
